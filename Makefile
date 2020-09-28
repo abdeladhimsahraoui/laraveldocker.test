@@ -40,8 +40,11 @@ ssh-php: ## Ssh into laravel container (www-data)
 
 #PHALCON=$(CMD_DOCKER_COMPOSE) exec --user www-data $(PROJECT_NAME)
 
+#init: ## install laravel
+#	composer create-project laravel/laravel ./src/
+
 init: ## install laravel
-	composer create-project laravel/laravel ./src/
+	$(LARAVEL) ./composer.sh create-project laravel/laravel ./src/
 
 migrate:
 	$(CMD_DOCKER_COMPOSE) exec php php /var/www/html/artisan migrate
